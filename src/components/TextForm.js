@@ -21,9 +21,7 @@ export default function TextForm(props) {
         props.setAlertwithType("converted to sentencecase","success")
     }
     const copyClick=()=>{
-        let newText=document.getElementById('mybox')
-        newText.select()
-        navigator.clipboard.writeText(newText.value)
+        navigator.clipboard.writeText(text)
         props.setAlertwithType("copied to clipboard ","success")
     }
     const clearClick=()=>{
@@ -41,19 +39,20 @@ export default function TextForm(props) {
             <div className="mb-3">
                 <textarea className="form-control" id="mybox" rows="10" value={text} onChange={changeClick} style={{backgroundColor: props.mode ==='light'?'white':'#121212',color:props.mode ==='light'?'black':'white'}}></textarea>
             </div>
-            <div className="btn btn-primary mx-1 my-1" onClick={upClick}>Convert to Uppercase</div>
-            <div className="btn btn-primary mx-1 my-1" onClick={lowClick}>Convert to Lowercase</div>
-            <div className="btn btn-primary mx-1 my-1" onClick={sentenceClick}>Convert to Sentencecase</div>
-            <div className="btn btn-primary mx-1 my-1" onClick={copyClick}>Copy Text</div>
-            <div className="btn btn-primary mx-1 my-1" onClick={clearClick}>Clear Text</div>
+            
+            <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={upClick}>Convert to Uppercase</button>
+            <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={lowClick}>Convert to Lowercase</button>
+            <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={sentenceClick}>Convert to Sentencecase</button>
+            <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={copyClick}>Copy Text</button>
+            <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={clearClick}>Clear Text</button>
         </div>
             
         <div className="container my-3">
             <h1>Your Text summary:</h1>
-            <p>{text.split(" ").filter((ele)=>{return ele.length!==0}).length} words and {text.length} characters</p>
-            <p>{0.08 * text.split(" ").length} minutes read</p>
+            <p>{text.split(/\s+/).filter((ele)=>{return ele.length!==0}).length} words and {text.length} characters</p>
+            <p>{0.08 * text.split(/\s+/).filter((ele)=>{return ele.length!==0}).length} minutes read</p>
             <h2>Preview</h2>
-            <p>{text.length>0?text:"Enter your text in the above Textbox to preview"}</p>
+            <p>{text.length>0?text:"Nothing to preview"}</p>
         </div>
         </>
     )
