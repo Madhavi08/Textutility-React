@@ -7,8 +7,7 @@ import TextForm from './components/TextForm';
 import {
   HashRouter as Router,
   Route,
-  Routes,
-  Link,
+  Routes
 } from "react-router-dom";
 
 function App() {
@@ -49,7 +48,7 @@ function App() {
             <Route path="/" element={<TextForm setAlertwithType={setAlertwithType} heading="Enter the Text to Analyze" mode={mode} />}>
               
             </Route>
-            <Route path="/about" element={<About/>}>
+            <Route path="/about" element={<About mode={mode}/>}>
              
             </Route>
             

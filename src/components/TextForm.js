@@ -41,16 +41,16 @@ export default function TextForm(props) {
             <div className="mb-3">
                 <textarea className="form-control" id="mybox" rows="10" value={text} onChange={changeClick} style={{backgroundColor: props.mode ==='light'?'white':'#121212',color:props.mode ==='light'?'black':'white'}}></textarea>
             </div>
-            <div className="btn btn-primary mx-1" onClick={upClick}>Convert to Uppercase</div>
-            <div className="btn btn-primary mx-1" onClick={lowClick}>Convert to Lowercase</div>
-            <div className="btn btn-primary mx-1" onClick={sentenceClick}>Convert to Sentencecase</div>
-            <div className="btn btn-primary mx-1" onClick={copyClick}>Copy Text</div>
-            <div className="btn btn-primary mx-1" onClick={clearClick}>Clear Text</div>
+            <div className="btn btn-primary mx-1 my-1" onClick={upClick}>Convert to Uppercase</div>
+            <div className="btn btn-primary mx-1 my-1" onClick={lowClick}>Convert to Lowercase</div>
+            <div className="btn btn-primary mx-1 my-1" onClick={sentenceClick}>Convert to Sentencecase</div>
+            <div className="btn btn-primary mx-1 my-1" onClick={copyClick}>Copy Text</div>
+            <div className="btn btn-primary mx-1 my-1" onClick={clearClick}>Clear Text</div>
         </div>
             
         <div className="container my-3">
             <h1>Your Text summary:</h1>
-            <p>{text.split(" ").length} words and {text.length} characters</p>
+            <p>{text.split(" ").filter((ele)=>{return ele.length!==0}).length} words and {text.length} characters</p>
             <p>{0.08 * text.split(" ").length} minutes read</p>
             <h2>Preview</h2>
             <p>{text.length>0?text:"Enter your text in the above Textbox to preview"}</p>
